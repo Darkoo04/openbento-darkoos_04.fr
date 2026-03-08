@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: '/', // Utilisez './' ou le nom de votre dépôt '/openbento-darkoos_04.fr/'
 })
