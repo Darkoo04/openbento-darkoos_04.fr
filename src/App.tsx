@@ -321,14 +321,14 @@
 	  "textColor":"text-gray-900",
 	  "gridColumn":8,
 	  "gridRow":1,
-	  "imageUrl":"assets/block-bento_1772923164674_d7ja73xc2.png"
+	  "imageUrl":"/assets/block-bento_1772923164674_d7ja73xc2.png"
 	},  
-	{"id":"bento_1772923164674_h0anduihs","type":"LINK","title":"Tiktok","content":"https://www.tiktok.com/@txesportone","colSpan":2,"rowSpan":3,"color":"bg-white","textColor":"text-gray-900","gridColumn":3,"gridRow":1,"subtext":"Tiktok TX Esport","imageUrl":"/assets/block-bento_1772923164674_h0anduihs.png"},
-	  {"id":"bento_1772923164674_6cpjsz4cv","type":"MEDIA","title":"","content":"","colSpan":3,"rowSpan":3,"color":"bg-white","textColor":"text-gray-900","gridColumn":5,"gridRow":1,"imageUrl":"/assets/block-bento_1772923164674_6cpjsz4cv.png"},
-	  {"id":"bento_1772923164674_d7ja73xc2","type":"LINK","title":"Tiktok R6","content":"https://www.tiktok.com/@txesportone/video/7454290422907653398","colSpan":2,"rowSpan":3,"color":"bg-white","textColor":"text-gray-900","gridColumn":8,"gridRow":1,"imageUrl":"/assets/block-bento_1772923164674_d7ja73xc2.png"},
-	  {"id":"bento_1772923164674_c28glrrvt","type":"MEDIA","title":"","content":"","colSpan":3,"rowSpan":5,"color":"bg-white","textColor":"text-gray-900","gridColumn":1,"gridRow":4,"imageUrl":"/assets/block-bento_1772923164674_c28glrrvt.png"},
-	  {"id":"bento_1772923164674_r05brxl9z","type":"MEDIA","title":"","content":"","colSpan":3,"rowSpan":6,"color":"bg-white","textColor":"text-gray-900","gridColumn":4,"gridRow":4,"imageUrl":"/assets/block-bento_1772923164674_r05brxl9z.png"},
-	  {"id":"bento_1772923164674_q4w6da9s3","type":"LINK","title":"Tiktok RL","content":"https://www.tiktok.com/@txesportone/video/7440843674579258657","colSpan":2,"rowSpan":3,"color":"bg-white","textColor":"text-gray-900","gridColumn":7,"gridRow":4,"imageUrl":"/assets/block-bento_1772923164674_q4w6da9s3.png"}
+	#{"id":"bento_1772923164674_h0anduihs","type":"LINK","title":"Tiktok","content":"https://www.tiktok.com/@txesportone","colSpan":2,"rowSpan":3,"color":"bg-white","textColor":"text-gray-900","gridColumn":3,"gridRow":1,"subtext":"Tiktok TX Esport","imageUrl":"/assets/block-bento_1772923164674_h0anduihs.png"},
+	#{"id":"bento_1772923164674_6cpjsz4cv","type":"MEDIA","title":"","content":"","colSpan":3,"rowSpan":3,"color":"bg-white","textColor":"text-gray-900","gridColumn":5,"gridRow":1,"imageUrl":"/assets/block-bento_1772923164674_6cpjsz4cv.png"},
+	#{"id":"bento_1772923164674_d7ja73xc2","type":"LINK","title":"Tiktok R6","content":"https://www.tiktok.com/@txesportone/video/7454290422907653398","colSpan":2,"rowSpan":3,"color":"bg-white","textColor":"text-gray-900","gridColumn":8,"gridRow":1,"imageUrl":"/assets/block-bento_1772923164674_d7ja73xc2.png"},
+	#{"id":"bento_1772923164674_c28glrrvt","type":"MEDIA","title":"","content":"","colSpan":3,"rowSpan":5,"color":"bg-white","textColor":"text-gray-900","gridColumn":1,"gridRow":4,"imageUrl":"/assets/block-bento_1772923164674_c28glrrvt.png"},
+	#{"id":"bento_1772923164674_r05brxl9z","type":"MEDIA","title":"","content":"","colSpan":3,"rowSpan":6,"color":"bg-white","textColor":"text-gray-900","gridColumn":4,"gridRow":4,"imageUrl":"/assets/block-bento_1772923164674_r05brxl9z.png"},
+	#{"id":"bento_1772923164674_q4w6da9s3","type":"LINK","title":"Tiktok RL","content":"https://www.tiktok.com/@txesportone/video/7440843674579258657","colSpan":2,"rowSpan":3,"color":"bg-white","textColor":"text-gray-900","gridColumn":7,"gridRow":4,"imageUrl":"/assets/block-bento_1772923164674_q4w6da9s3.png"}
 	]
 
 
