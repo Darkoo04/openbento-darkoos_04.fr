@@ -311,6 +311,7 @@
 	const profile = {"name":"Portfolio Darkoos_04","bio":"Community Manager et créateur de site web","avatarUrl":"https://picsum.photos/200/200","theme":"light","primaryColor":"blue","showBranding":true,"analytics":{"enabled":false,"supabaseUrl":""},"socialAccounts":[]}
 	// Remplacez votre bloc actuel par celui-ci :
 const blocks: BlockData[] = [
+  
   {
     "id": "bento_1772923164674_d7ja73xc2",
     "type": BlockType.LINK,
@@ -322,7 +323,21 @@ const blocks: BlockData[] = [
     "textColor": "text-gray-900",
     "gridColumn": 8,
     "gridRow": 1,
-    "imageUrl": "/openbento-darkoos_04.fr/assets/block-bento_1772923164674_d7ja73xc2.png"
+    "imageUrl": "/openbento-darkoos_04.fr/cassets/block-bento_1772923164674_d7ja73xc2.png"
+  },
+  {
+    "id": "bento_1772923164674_h0anduihs",
+    "type": BlockType.LINK,
+    "title": "Instagram",
+    "content": "https://www.instagram.com/t.x_esport/",
+    "colSpan": 2,
+    "rowSpan": 3,
+    "color": "bg-white",
+    "textColor": "text-gray-900",
+    "gridColumn": 3,
+    "gridRow": 1,
+    "subtext": "Instagram TX Esport",
+    "imageUrl": "/openbento-darkoos_04.fr/assets/block-bento_1772923164674_vtgbzcpk3.png"
   },
   {
     "id": "bento_1772923164674_h0anduihs",
