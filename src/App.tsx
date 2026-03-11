@@ -388,7 +388,7 @@ const blocks: BlockData[] = [
     "textColor": "text-gray-900",
     "gridColumn": 7,
     "gridRow": 4,
-    "imageUrl": "/assets/block-bento_1772923164674_q4w6da9s3.png"
+    "imageUrl": "/openbento-darkoos_04.fr/assets/block-bento_1772923164674_q4w6da9s3.png"
   }
 ];
 
