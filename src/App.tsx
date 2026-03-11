@@ -311,8 +311,8 @@ const Block = ({ block }: { block: BlockData }) => {
 // Profile data
 const profile = {"name":"Portfolio Darkoos_04","bio":"Community Manager et créateur de site web","avatarUrl":"https://picsum.photos/200/200","theme":"light","primaryColor":"blue","showBranding":true,"analytics":{"enabled":false,"supabaseUrl":""},"socialAccounts":[]}
 const blocks: BlockData[] = [
-{"
-  id":"bento_1772923164674_vtgbzcpk3",
+{
+  "id":"bento_1772923164674_vtgbzcpk3",
   "type":"LINK",
   "title":"Instagram",
   "content":"https://www.instagram.com/t.x_esport/?__pwa=1#",
