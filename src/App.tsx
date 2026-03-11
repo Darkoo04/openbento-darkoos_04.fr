@@ -328,20 +328,6 @@ const blocks: BlockData[] = [
   {
     "id": "bento_1772923164674_h0anduihs",
     "type": BlockType.LINK,
-    "title": "Instagram",
-    "content": "https://www.instagram.com/t.x_esport/",
-    "colSpan": 2,
-    "rowSpan": 3,
-    "color": "bg-white",
-    "textColor": "text-gray-900",
-    "gridColumn": 3,
-    "gridRow": 1,
-    "subtext": "Instagram TX Esport",
-    "imageUrl": "/openbento-darkoos_04.fr/assets/block-bento_1772923164674_vtgbzcpk3.png"
-  },
-  {
-    "id": "bento_1772923164674_h0anduihs",
-    "type": BlockType.LINK,
     "title": "Tiktok",
     "content": "https://www.tiktok.com/@txesportone",
     "colSpan": 2,
