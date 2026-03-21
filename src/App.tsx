@@ -423,7 +423,7 @@ const Block = ({ block, onImageClick }: { block: BlockData; onImageClick?: (url:
 
 
 // Profile data
-const profile = {"name":"Portfolio Darkoos_04","bio":"Community Manager et créateur de site web","avatarUrl":"/assets/tx.png","theme":"light","primaryColor":"blue","showBranding":true,"analytics":{"enabled":false,"supabaseUrl":""},"socialAccounts":[]}
+const profile = {"name":"Portfolio Neo Community","bio":"Community Manager et créateur de site web","avatarUrl":"/assets/tx.png","theme":"light","primaryColor":"blue","showBranding":true,"analytics":{"enabled":false,"supabaseUrl":""},"socialAccounts":[]}
 const blocks: BlockData[] = [
 {
   "id":"bento_1772923164674_vtgbzcpk3",
