@@ -461,12 +461,15 @@ const useAnalytics = () => {
   }, [])
 }
 
-
-// Mobile layout helper - calculates responsive grid spans
-const getMobileLayout = (block: BlockData) => ({
-  colSpan: block.colSpan >= 5 ? 2 : 1,
-  rowSpan: block.colSpan >= 3 && block.colSpan < 5 ? Math.max(block.rowSpan, 2) : block.rowSpan
-})
+// Après (plus précis)
+const getMobileLayout = (block: BlockData) => {
+  // Blocs très larges → pleine largeur
+  if (block.colSpan >= 5) return { colSpan: 2, rowSpan: Math.max(block.rowSpan, 3) }
+  // Blocs moyens → pleine largeur avec hauteur augmentée
+  if (block.colSpan >= 3) return { colSpan: 2, rowSpan: Math.max(block.rowSpan, 2) }
+  // Petits blocs → demi-largeur
+  return { colSpan: 1, rowSpan: Math.max(block.rowSpan, 2) }
+}
 
 // Sort blocks for mobile
 const sortedBlocks = [...blocks].sort((a, b) => {
