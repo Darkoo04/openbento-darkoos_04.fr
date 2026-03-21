@@ -423,7 +423,7 @@ const Block = ({ block, onImageClick }: { block: BlockData; onImageClick?: (url:
 
 
 // Profile data
-const profile = {"name":"Portfolio Neo Community","bio":"J'accompagne les entreprises à développer leur audience sur leurs réseaux grâce à une stratégie de contenu sur-mesure.","avatarUrl":"/assets/tx.png","theme":"light","primaryColor":"blue","showBranding":true,"analytics":{"enabled":false,"supabaseUrl":""},"socialAccounts":[]}
+const profile = {"name":"Portfolio Neo Community","bio":"Community Manager & Créateur de sites web | J'accompagne les entreprises à développer leur audience sur leurs réseaux grâce à une stratégie de contenu sur-mesure.","avatarUrl":"/assets/tx.png","theme":"light","primaryColor":"blue","showBranding":true,"analytics":{"enabled":false,"supabaseUrl":""},"socialAccounts":[]}
 const blocks: BlockData[] = [
 {
   "id":"bento_1772923164674_vtgbzcpk3",
