@@ -132,9 +132,35 @@ const useTiltEffect = (isEnabled = true) => {
   return { elementRef, tiltStyle, handleMouseMove, handleMouseLeave }
 }
 
+// Lightbox component
+const Lightbox = ({ imageUrl, onClose }: { imageUrl: string; onClose: () => void }) => {
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [onClose])
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <button
+        className="absolute top-4 right-4 text-white bg-white/20 hover:bg-white/40 rounded-full w-10 h-10 flex items-center justify-center text-xl transition"
+        onClick={onClose}
+      >✕</button>
+      <img
+        src={imageUrl}
+        alt=""
+        className="max-w-[90vw] max-h-[90vh] object-contain rounded-xl shadow-2xl"
+        onClick={e => e.stopPropagation()}
+      />
+    </div>
+  )
+}
 
 // Block component
-const Block = ({ block }: { block: BlockData }) => {
+const Block = ({ block, onImageClick }: { block: BlockData; onImageClick?: (url: string) => void }) => {
   const { elementRef, tiltStyle, handleMouseMove, handleMouseLeave } = useTiltEffect(true)
   const [videos, setVideos] = useState(block.youtubeVideos || [])
   const [loading, setLoading] = useState(false)
@@ -484,6 +510,7 @@ const sortedBlocks = [...blocks].sort((a, b) => {
 export default function App() {
   useAnalytics()
 
+  const [lightboxImg, setLightboxImg] = useState<string | null>(null)
   const avatarStyle = { borderRadius: '1.5rem', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)', border: '4px solid #ffffff' }
   const bgStyle: React.CSSProperties = { backgroundColor: '#f8fafc' }
 
