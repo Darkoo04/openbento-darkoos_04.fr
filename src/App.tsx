@@ -321,7 +321,7 @@ const blocks: BlockData[] = [
   "gridColumn":1,
   "gridRow":1,
   "subtext": "Instagram TX Esport",
-  "imageUrl":"/assets/block-bento_1772923164674_vtgbzcpk3.png",
+  "imageUrl":"/assets/instagram.png",
 },
 {
     "id": "bento_1772923164674_d7ja73xc2",
@@ -348,7 +348,7 @@ const blocks: BlockData[] = [
     "gridColumn": 3,
     "gridRow": 1,
     "subtext": "Tiktok TX Esport",
-    "imageUrl": "/assets/block-bento_1772923164674_h0anduihs.png"
+    "imageUrl": "/assets/tiktok.png"
   },
   {
     "id": "bento_1772923164674_6cpjsz4cv",
