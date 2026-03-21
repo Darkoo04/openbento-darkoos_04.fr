@@ -320,7 +320,7 @@ const blocks: BlockData[] = [
   "textColor":"text-gray-900",
   "gridColumn":1,
   "gridRow":1,
-  "subtext":"https://www.instagram.com/t.x_esport/?__pwa=1#",
+  "subtext": "Instagram TX Esport",
   "imageUrl":"/assets/block-bento_1772923164674_vtgbzcpk3.png",
 },
 {
