@@ -334,7 +334,7 @@ const blocks: BlockData[] = [
     "textColor": "text-gray-900",
     "gridColumn": 8,
     "gridRow": 1,
-    "imageUrl": "/openbento-darkoos_04.fr/assets/block-bento_1772923164674_d7ja73xc2.png"
+    "imageUrl": "/assets/block-bento_1772923164674_d7ja73xc2.png"
   },
   {
     "id": "bento_1772923164674_h0anduihs",
@@ -348,7 +348,7 @@ const blocks: BlockData[] = [
     "gridColumn": 3,
     "gridRow": 1,
     "subtext": "Tiktok TX Esport",
-    "imageUrl": "/openbento-darkoos_04.fr/assets/block-bento_1772923164674_h0anduihs.png"
+    "imageUrl": "/assets/block-bento_1772923164674_h0anduihs.png"
   },
   {
     "id": "bento_1772923164674_6cpjsz4cv",
@@ -361,7 +361,7 @@ const blocks: BlockData[] = [
     "textColor": "text-gray-900",
     "gridColumn": 5,
     "gridRow": 1,
-    "imageUrl": "/openbento-darkoos_04.fr/assets/block-bento_1772923164674_6cpjsz4cv.png"
+    "imageUrl": "/assets/block-bento_1772923164674_6cpjsz4cv.png"
   },
   {
     "id": "bento_1772923164674_c28glrrvt",
@@ -374,7 +374,7 @@ const blocks: BlockData[] = [
     "textColor": "text-gray-900",
     "gridColumn": 1,
     "gridRow": 4,
-    "imageUrl": "/openbento-darkoos_04.fr/assets/block-bento_1772923164674_c28glrrvt.png"
+    "imageUrl": "/assets/block-bento_1772923164674_c28glrrvt.png"
   },
   {
     "id": "bento_1772923164674_r05brxl9z",
@@ -387,7 +387,7 @@ const blocks: BlockData[] = [
     "textColor": "text-gray-900",
     "gridColumn": 4,
     "gridRow": 4,
-    "imageUrl": "/openbento-darkoos_04.fr/assets/block-bento_1772923164674_r05brxl9z.png"
+    "imageUrl": "/assets/block-bento_1772923164674_r05brxl9z.png"
   },
   {
     "id": "bento_1772923164674_q4w6da9s3",
@@ -400,7 +400,7 @@ const blocks: BlockData[] = [
     "textColor": "text-gray-900",
     "gridColumn": 7,
     "gridRow": 4,
-    "imageUrl": "/openbento-darkoos_04.fr/assets/block-bento_1772923164674_q4w6da9s3.png"
+    "imageUrl": "/assets/block-bento_1772923164674_q4w6da9s3.png"
   }
 ];
 
