@@ -321,7 +321,7 @@ const blocks: BlockData[] = [
   "gridColumn":1,
   "gridRow":1,
   "subtext":"https://www.instagram.com/t.x_esport/?__pwa=1#",
-  "imageUrl":"/openbento-darkoos_04.fr/assets/block-bento_1772923164674_vtgbzcpk3.png",
+  "imageUrl":"/assets/block-bento_1772923164674_vtgbzcpk3.png",
 },
 {
     "id": "bento_1772923164674_d7ja73xc2",
