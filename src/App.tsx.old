@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { Youtube, Play, Loader2, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Youtube, Play, Loader2 } from 'lucide-react'
 import {
   SiX, SiInstagram, SiTiktok, SiYoutube, SiGithub, SiGitlab,
   SiFacebook, SiTwitch, SiDribbble, SiMedium, SiDevdotto, SiReddit,
@@ -93,96 +93,6 @@ const formatFollowerCount = (count: number | undefined): string => {
 }
 
 
-// ─── LIGHTBOX COMPONENT ───────────────────────────────────────────────────────
-interface LightboxProps {
-  images: string[]
-  startIndex: number
-  onClose: () => void
-}
-
-const Lightbox = ({ images, startIndex, onClose }: LightboxProps) => {
-  const [current, setCurrent] = useState(startIndex)
-
-  const prev = useCallback(() => setCurrent(i => (i - 1 + images.length) % images.length), [images.length])
-  const next = useCallback(() => setCurrent(i => (i + 1) % images.length), [images.length])
-
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-      if (e.key === 'ArrowLeft') prev()
-      if (e.key === 'ArrowRight') next()
-    }
-    document.addEventListener('keydown', handleKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', handleKey)
-      document.body.style.overflow = ''
-    }
-  }, [onClose, prev, next])
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      {/* Close button */}
-      <button
-        className="absolute top-4 right-4 text-white bg-white/20 hover:bg-white/40 rounded-full w-10 h-10 flex items-center justify-center transition-all z-10"
-        onClick={onClose}
-        aria-label="Fermer"
-      >
-        <X size={20} />
-      </button>
-
-      {/* Previous button */}
-      {images.length > 1 && (
-        <button
-          className="absolute left-4 text-white bg-white/20 hover:bg-white/40 rounded-full w-10 h-10 flex items-center justify-center transition-all z-10"
-          onClick={e => { e.stopPropagation(); prev() }}
-          aria-label="Image précédente"
-        >
-          <ChevronLeft size={22} />
-        </button>
-      )}
-
-      {/* Image */}
-      <img
-        src={images[current]}
-        alt=""
-        className="max-w-[88vw] max-h-[88vh] object-contain rounded-2xl shadow-2xl select-none"
-        onClick={e => e.stopPropagation()}
-        draggable={false}
-      />
-
-      {/* Next button */}
-      {images.length > 1 && (
-        <button
-          className="absolute right-4 text-white bg-white/20 hover:bg-white/40 rounded-full w-10 h-10 flex items-center justify-center transition-all z-10"
-          onClick={e => { e.stopPropagation(); next() }}
-          aria-label="Image suivante"
-        >
-          <ChevronRight size={22} />
-        </button>
-      )}
-
-      {/* Dots indicator */}
-      {images.length > 1 && (
-        <div className="absolute bottom-6 flex gap-2">
-          {images.map((_, i) => (
-            <button
-              key={i}
-              className={`w-2 h-2 rounded-full transition-all ${i === current ? 'bg-white scale-125' : 'bg-white/40'}`}
-              onClick={e => { e.stopPropagation(); setCurrent(i) }}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
-// ─────────────────────────────────────────────────────────────────────────────
-
-
 // Tilt effect hook
 const useTiltEffect = (isEnabled = true) => {
   const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({})
@@ -222,6 +132,32 @@ const useTiltEffect = (isEnabled = true) => {
   return { elementRef, tiltStyle, handleMouseMove, handleMouseLeave }
 }
 
+// Lightbox component
+const Lightbox = ({ imageUrl, onClose }: { imageUrl: string; onClose: () => void }) => {
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [onClose])
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <button
+        className="absolute top-4 right-4 text-white bg-white/20 hover:bg-white/40 rounded-full w-10 h-10 flex items-center justify-center text-xl transition"
+        onClick={onClose}
+      >✕</button>
+      <img
+        src={imageUrl}
+        alt=""
+        className="max-w-[90vw] max-h-[90vh] object-contain rounded-xl shadow-2xl"
+        onClick={e => e.stopPropagation()}
+      />
+    </div>
+  )
+}
 
 // Block component
 const Block = ({ block, onImageClick }: { block: BlockData; onImageClick?: (url: string) => void }) => {
@@ -280,21 +216,11 @@ const Block = ({ block, onImageClick }: { block: BlockData; onImageClick?: (url:
     }
   }
 
-  // Handler pour ouvrir la lightbox sur les blocs image (MEDIA sans lien externe)
-  const handleImageClick = (e: React.MouseEvent) => {
-    if (block.imageUrl && onImageClick) {
-      e.stopPropagation()
-      onImageClick(block.imageUrl)
-    }
-  }
-
   const isYoutube = block.type === BlockType.SOCIAL && block.channelId
   const activeVideoId = block.youtubeVideoId || videos[0]?.id
   const isRichYT = isYoutube && activeVideoId && block.youtubeMode !== 'grid' && block.youtubeMode !== 'list'
   const isYTGrid = isYoutube && (block.youtubeMode === 'grid' || block.youtubeMode === 'list')
   const isLinkImg = block.type === BlockType.LINK && block.imageUrl
-  // Les blocs MEDIA s'ouvrent en lightbox, les blocs LINK redirigent vers le lien
-  const isMediaOnly = block.type === BlockType.MEDIA && block.imageUrl
 
   if (block.type === BlockType.SPACER) return <div style={{ borderRadius, ...gridStyle }} className="h-full" />
 
@@ -347,11 +273,7 @@ const Block = ({ block, onImageClick }: { block: BlockData; onImageClick?: (url:
   else if (isLinkImg && block.imageUrl) bgStyle = { backgroundImage: `url(${block.imageUrl})`, backgroundSize: 'cover', backgroundPosition: `${mediaPos.x}% ${mediaPos.y}%` }
 
   return (
-    <div
-      onClick={isMediaOnly ? handleImageClick : handleClick}
-      style={{ ...gridStyle }}
-      className="cursor-pointer h-full transform-gpu"
-    >
+    <div onClick={handleClick} style={{ ...gridStyle }} className="cursor-pointer h-full transform-gpu">
       <div ref={elementRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}
         style={{ ...bgStyle, borderRadius, ...tiltStyle, width: '100%', height: '100%', transformStyle: 'preserve-3d' }}
         className={`bento-item group relative overflow-hidden w-full h-full ${!block.customBackground && !isLinkImg && !isRichYT ? (block.color || 'bg-white') : ''} ${block.textColor || 'text-gray-900'} ring-1 ring-black/5 shadow-sm transition-all`}>
@@ -360,17 +282,6 @@ const Block = ({ block, onImageClick }: { block: BlockData; onImageClick?: (url:
         {(isRichYT || isLinkImg) && (block.title || block.subtext) && (
           <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-0" />
         )}
-
-        {/* Icône loupe sur les blocs MEDIA pour indiquer qu'on peut agrandir */}
-        {isMediaOnly && (
-          <div className="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 rounded-full p-1.5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
-            </svg>
-          </div>
-        )}
-
         <div className="w-full h-full relative z-10">
           {block.type === BlockType.MEDIA && block.imageUrl ? (
             <div className="w-full h-full relative overflow-hidden">
@@ -559,6 +470,7 @@ const useAnalytics = () => {
         screenW: window.screen?.width,
         screenH: window.screen?.height,
       }
+      // Use Edge Function endpoint (secure - no API keys needed)
       const endpoint = config.supabaseUrl.replace(/\/+$/, '') + '/functions/v1/openbento-analytics-track'
       fetch(endpoint, {
         method: 'POST',
@@ -569,14 +481,19 @@ const useAnalytics = () => {
     }
 
     track('page_view')
+
+    // Note: session_end is not supported by the Edge Function, only page_view and click
+    // If you need session tracking, extend the Edge Function
   }, [])
 }
 
-
-// Mobile layout helper - calculates responsive grid spans
+// Après (plus précis)
 const getMobileLayout = (block: BlockData) => {
+  // Blocs très larges → pleine largeur
   if (block.colSpan >= 5) return { colSpan: 2, rowSpan: Math.max(block.rowSpan, 3) }
+  // Blocs moyens → pleine largeur avec hauteur augmentée
   if (block.colSpan >= 3) return { colSpan: 2, rowSpan: Math.max(block.rowSpan, 2) }
+  // Petits blocs → demi-largeur
   return { colSpan: 1, rowSpan: Math.max(block.rowSpan, 2) }
 }
 
@@ -590,42 +507,16 @@ const sortedBlocks = [...blocks].sort((a, b) => {
   return aCol - bCol
 })
 
-// Collect all image URLs for lightbox navigation
-const allImageUrls = blocks
-  .filter(b => b.type === BlockType.MEDIA && b.imageUrl)
-  .map(b => b.imageUrl as string)
-
 export default function App() {
   useAnalytics()
 
-  // Lightbox state
-  const [lightbox, setLightbox] = useState<{ url: string } | null>(null)
-
-  const openLightbox = useCallback((url: string) => {
-    setLightbox({ url })
-  }, [])
-
-  const closeLightbox = useCallback(() => {
-    setLightbox(null)
-  }, [])
-
-  const lightboxIndex = lightbox ? allImageUrls.indexOf(lightbox.url) : 0
-
+  const [lightboxImg, setLightboxImg] = useState<string | null>(null)
   const avatarStyle = { borderRadius: '1.5rem', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)', border: '4px solid #ffffff' }
   const bgStyle: React.CSSProperties = { backgroundColor: '#f8fafc' }
 
   return (
     <div className="min-h-screen font-sans" style={bgStyle}>
-
-      {/* Lightbox */}
-      {lightbox && (
-        <Lightbox
-          images={allImageUrls.length > 0 ? allImageUrls : [lightbox.url]}
-          startIndex={lightboxIndex >= 0 ? lightboxIndex : 0}
-          onClose={closeLightbox}
-        />
-      )}
-
+      
       <div className="relative z-10">
 
         {/* Desktop Layout */}
@@ -636,10 +527,11 @@ export default function App() {
             </div>
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 mb-3">{profile.name}</h1>
             <p className="text-base text-gray-500 font-medium whitespace-pre-wrap max-w-xs">{profile.bio}</p>
+            
           </div>
           <div className="ml-[420px] flex-1 p-12">
             <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(9, 1fr)', gridAutoRows: '64px' }}>
-              {blocks.map(block => <Block key={block.id} block={block} onImageClick={openLightbox} />)}
+              {blocks.map(block => <Block key={block.id} block={block} />)}
             </div>
           </div>
         </div>
@@ -653,14 +545,15 @@ export default function App() {
             </div>
             <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 mb-2">{profile.name}</h1>
             <p className="text-sm text-gray-500 font-medium whitespace-pre-wrap max-w-xs">{profile.bio}</p>
+            
           </div>
           <div className="p-4">
-            <div className="grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', gridAutoRows: '90px', gap: '10px' }}>
+            <div className="grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', gridAutoRows: '80px', gap: '12px' }}>
               {sortedBlocks.map(block => {
                 const mobile = getMobileLayout(block)
                 return (
                   <div key={block.id} style={{ gridColumn: `span ${mobile.colSpan}`, gridRow: `span ${mobile.rowSpan}` }}>
-                    <Block block={{ ...block, gridColumn: undefined, gridRow: undefined }} onImageClick={openLightbox} />
+                    <Block block={{ ...block, gridColumn: undefined, gridRow: undefined }} />
                   </div>
                 )
               })}
